@@ -163,3 +163,9 @@ sel_t3.getFocused = function ()
 
 // export
 window.sel_t3 = sel_t3;
+
+// MediaWiki hook(s)
+if (typeof mw === 'object' && typeof mw.hook === 'function') {
+	// usage: mw.hook('userjs.sel_t3.ready').add(function (sel_t3) {...});
+	mw.hook('userjs.sel_t3.ready').fire(sel_t3);
+}
