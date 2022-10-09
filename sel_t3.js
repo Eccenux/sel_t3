@@ -1,8 +1,12 @@
+/* global $ */
 /**
-  Selection tools 3.
+	Selection tools 3.
 
-  Simplified version of [[MediaWiki:Gadget-sel_t.js]].
-  IE browser is not supported (and won't be).
+	Simplified version of [[MediaWiki:Gadget-sel_t.js]].
+	IE browser is not supported (and won't be).
+
+	Repo:
+	https://github.com/Eccenux/sel_t3
 */
 var sel_t3 = {};
 sel_t3.version = '3.0.0';
@@ -76,7 +80,7 @@ sel_t3.insertText = function (tagOpen, tagClose, sampleText)
 	// just a test
 	// REMOVE ME LATER
 	var getSelection = this.getSelection();
-	console.log('[sel_t3]', {getSelection, tagOpen, tagClose, sampleText});
+	console.log('[sel_t3]', {getSelection:getSelection, tagOpen:tagOpen, tagClose:tagClose, sampleText:sampleText});
 
 	// check if nothing is focused then skip (both textarea and contenteditable has focus)
 	if (!sel_t3.getFocused()) {
@@ -120,22 +124,22 @@ sel_t3.insertText = function (tagOpen, tagClose, sampleText)
   You might want to use `insertText` instead.
 */
 sel_t3.insertNewText = function (newText) {
-    // attempting to paste to preserver undo functionality
-    var pasted = true;
-    try {
-        if (!document.execCommand("insertText", false, newText)) {
+	// attempting to paste to preserver undo functionality
+	var pasted = true;
+	try {
+		if (!document.execCommand("insertText", false, newText)) {
 			console.log('[sel_t3]', 'not execCommand')
-            pasted = false;
-        }
-    } catch (e) {
-        console.error('[sel_t3]', 'error caught:', e);
-        pasted = false;
-    }
-    // could do a fallback here... (but would have to know what is focused)
-    if (!pasted) {
-        console.error('[sel_t3]', 'paste unsuccessful, execCommand not supported or no input focused');
+			pasted = false;
+		}
+	} catch (e) {
+		console.error('[sel_t3]', 'error caught:', e);
+		pasted = false;
+	}
+	// could do a fallback here... (but would have to know what is focused)
+	if (!pasted) {
+		console.error('[sel_t3]', 'paste unsuccessful, execCommand not supported or no input focused');
 		return false;
-    }
+	}
 	return pasted;
 }
 
