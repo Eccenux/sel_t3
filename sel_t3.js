@@ -5,6 +5,9 @@
 	Simplified version of [[MediaWiki:Gadget-sel_t.js]].
 	IE browser is not supported (and won't be).
 
+	License: CC-BY or MIT.
+	Copyright: © 2022 Maciej Nux Jaros.
+
 	Repo:
 	https://github.com/Eccenux/sel_t3
 */
