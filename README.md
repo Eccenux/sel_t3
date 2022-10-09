@@ -16,22 +16,26 @@ Not so much with buttons. Focus the input if you use this with buttons.
 
 For example:
 1. Nothing is selected.
-2. This is executed: sel_t3.insertText('<b>', '</b>', 'bold')
-3. This is inserted at cursor postion: <b>bold</b>
+2. This is executed: `sel_t3.insertText('<b>', '</b>', 'bold')`
+3. This is inserted at cursor postion: `<b>bold</b>`
 
+Same, but something is selected:
 1. Selected text is "important".
-2. This is executed: sel_t3.insertText('<b>', '</b>', 'bold')
-3. This replaces selection: <b>important</b>
+2. This is executed: `sel_t3.insertText('<b>', '</b>', 'bold')`
+3. This replaces selection: `<b>important</b>`
 
-When something is selected this is equivalent:
+Note that when something is selected this is equivalent:
+```
 sel_t3.insertText('<b>', '</b>', 'bold')
 sel_t3.insertText('<b>', '</b>')
+```
 
 And for a single argument...
 1. Nothing is selected.
-2. You run sel_t3.insertText('<br>')
-3. This is inserted at cursor postion: <br>
+2. You run: `sel_t3.insertText('<br>')`
+3. This is inserted at cursor postion: `<br>`
 
+Same, but something is selected:
 1. "x" is selected.
-2. You run sel_t3.insertText('<br>')
-3. This replaces selection: <br> (so "x" is removed)
+2. You run `sel_t3.insertText('<br>')`
+3. This replaces selection: `<br>` (so "x" is removed)
