@@ -39,3 +39,13 @@ Same, but something is selected:
 1. "x" is selected.
 2. You run `sel_t3.insertText('<br>')`
 3. This replaces selection: `<br>` (so "x" is removed)
+
+## Why shouldn't you change input.value?
+
+Good question 😉. Around 2018 or earlier browser vendors decided to kill undo buffer for inputs. Users cannot do CTRL+Z when you change a value of the input programmatically.
+
+Back in 2016 when you did a text editor in JS you could just change `input.value` and everything would just work. IIRC it was first partially broken in Chrome (not sure about the version). Chrome made undos weird and span through different input fields. Then in Firefox 62 (2018) CTRL+Z was disabled (undo buffer was cleared). This killed undo buffer for a lot of JS text editors (including my own).
+
+So what is the solutions? `document.execCommand("insertText", false, newText)`. Yes, this old API, but with a new twist. In January 2017 this got official support from Chrome (Blink) and Safari (WebKit) and a [w3c issue about execCommand](https://github.com/w3c/editing/issues/160) was added. [Firefox 89 implemented this in March 2021](https://bugzilla.mozilla.org/show_bug.cgi?id=1220696). So the command was defined long time ago, but really supported from 2021. Supported everywhere except IE, but IE is not developed any more.
+
+Long story short: just use `sel_t3.insertText` 🙂. It will preserve undo buffer. CTRL+Z will just work (Command+Z on a Mac).
