@@ -80,11 +80,6 @@ sel_t3.getSelection = function ()
 */
 sel_t3.insertText = function (tagOpen, tagClose, sampleText)
 {
-	// just a test
-	// REMOVE ME LATER
-	var getSelection = this.getSelection();
-	console.log('[sel_t3]', {getSelection:getSelection, tagOpen:tagOpen, tagClose:tagClose, sampleText:sampleText});
-
 	// check if nothing is focused then skip (both textarea and contenteditable has focus)
 	if (!sel_t3.getFocused()) {
 		return false;
