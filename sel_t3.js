@@ -12,7 +12,7 @@
 	https://github.com/Eccenux/sel_t3
 */
 var sel_t3 = {};
-sel_t3.version = '3.0.0';
+sel_t3.version = '3.0.1';
 
 /**
   Get selected text.
@@ -39,7 +39,7 @@ sel_t3.getSelection = function ()
 	} else {
 		selected = window.getSelection().toString();
 	}
-	result.selected = selected;
+	result.selected = selected.replace(/\r\n/g, '\n');	// fix for paste in CodeMirror
 	return result;
 }
 
